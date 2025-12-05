@@ -1,0 +1,680 @@
+
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Évasion Turquoise de Caye Caulker </title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        template: {
+                            sable: '#F3E5AB',
+                            ocre: '#C66B3D',
+                            roche: '#2D2A26',
+                            ciel: '#4A6C6F',
+                            bg: '#FAFAF9'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { overflow-x: hidden; }
+        
+        /* Ligne verticale de la timeline */
+        .timeline-line {
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #E5E7EB;
+            z-index: 0;
+        }
+        @media (min-width: 768px) {
+            .timeline-line { left: 50%; margin-left: -1px; }
+        }
+
+        /* Style des cartes Info */
+        .tip-card {
+            border-left: 4px solid #C66B3D;
+            background-color: #FFF7ED;
+        }
+
+        /* Masquer la scrollbar de la nav mobile tout en gardant le scroll */
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-template-bg text-template-roche antialiased">
+
+    <nav id="nav-desktop" class="hidden md:flex fixed top-0 w-full z-50 bg-white/90 backdrop-blur border-b border-gray-200 py-4 px-8 justify-between items-center shadow-sm transition-transform duration-300 -translate-y-full">
+        <a href="#top" class="text-xl font-serif font-bold tracking-widest text-template-roche">L'Évasion Turquoise de Caye Caulker</a>
+        <div class="space-x-6 text-sm font-bold text-gray-600">
+            <a href="#jour-1" class="nav-item-desktop hover:text-template-ocre transition">Le Parcours</a>
+            <a href="#pratique" class="nav-item-desktop hover:text-template-ocre transition">Infos Pratiques</a>
+        </div>
+    </nav>
+
+    <nav id="nav-mobile" class="md:hidden fixed top-0 w-full z-50 bg-white/95 backdrop-blur border-b border-gray-200 py-3 pl-4 overflow-x-auto hide-scroll whitespace-nowrap shadow-md transition-transform duration-300 -translate-y-full">
+        <div class="flex space-x-2 pr-4" id="mobile-menu-container">
+            <a href="#top" class="inline-block px-3 py-1 bg-template-roche text-white rounded-full text-xs font-bold shadow-sm">Top</a>
+            
+                <a href="#jour-1" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J1 Arrivée sous les tropiques</a>
+            
+                <a href="#jour-2" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J2 Immersion dans le 'Go Slow'</a>
+            
+                <a href="#jour-3" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J3 Merveilles sous-marines</a>
+            
+                <a href="#jour-4" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J4 Aventure en kayak et farniente</a>
+            
+                <a href="#jour-5" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J5 Pêche et saveurs locales</a>
+            
+                <a href="#jour-6" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J6 Exploration approfondie des récifs</a>
+            
+                <a href="#jour-7" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J7 Détente et ateliers locaux</a>
+            
+                <a href="#jour-8" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J8 Coucher de soleil et saveurs nocturnes</a>
+            
+                <a href="#jour-9" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J9 Balade à vélo et plages secrètes</a>
+            
+                <a href="#jour-10" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J10 Derniers instants 'Go Slow'</a>
+            
+                <a href="#jour-11" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J11 Retour vers la métropole</a>
+            
+                <a href="#jour-12" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J12 Arrivée à Paris</a>
+            
+            <a href="#pratique" class="mobile-link inline-block px-3 py-1 border border-gray-300 text-gray-500 rounded-full text-xs font-bold">Infos</a>
+        </div>
+    </nav>
+
+    <header id="top" class="relative h-[85vh] flex items-center justify-center overflow-hidden pt-12 md:pt-0">
+        
+        <div class="absolute inset-0 bg-black/50 z-10"></div>
+
+        <video autoplay muted loop playsinline 
+               poster="https://images.unsplash.com/photo-1579606946838-6db34433f3c0?q=80&w=2070"
+               class="absolute inset-0 w-full h-full object-cover">
+            <source src="https://videos.pexels.com/video-files/4456988/4456988-hd_1920_1080_25fps.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la vidéo.
+        </video>
+        
+        <div class="relative z-20 text-center text-white px-4 max-w-3xl animate-fade-in-up">
+            <p class="font-sans text-template-sable tracking-[0.3em] mb-4 uppercase text-sm font-semibold">Feuille de Route</p>
+            <h1 class="font-Playfair italic text-5xl md:text-8xl mb-6 leading-tight drop-shadow-lg">Caye caulker</h1>
+            <p class="font-sans text-lg md:text-xl text-gray-100 mb-10 font-light max-w-2xl mx-auto leading-relaxed">L'Évasion Turquoise de Caye Caulker</p>
+            
+            <div class="flex flex-wrap justify-center gap-4 text-sm font-bold mb-10">
+                <span class="bg-white/10 backdrop-blur-md px-5 py-2 rounded-full border border-white/20 shadow-sm">🗓️ 12 jours</span>
+                <span class="bg-white/10 backdrop-blur-md px-5 py-2 rounded-full border border-white/20 shadow-sm">💰 3500€ / pers</span>
+                <span class="bg-white/10 backdrop-blur-md px-5 py-2 rounded-full border border-white/20 shadow-sm">🛬 14-16h (avec escales) depuis Paris</span>
+            </div>
+
+        </div>
+    </header>
+
+    <section id="itineraire" class="max-w-6xl mx-auto px-4 py-20 relative">
+        
+        <div class="text-center mb-16">
+            <span class="text-template-ocre font-bold tracking-widest text-xs uppercase">Le Roadtrip</span>
+            <h2 class="font-serif text-4xl mt-2 text-template-roche">Votre Programme</h2>
+        </div>
+
+        <div class="relative">
+            <div class="timeline-line"></div>
+            
+            
+                <div id="jour-1" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2">Jour 1</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Arrivée sous les tropiques</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Après un long voyage, l'arrivée à Caye Caulker est une promesse de détente. Laissez-vous bercer par le rythme insulaire dès les premiers instants, en profitant d'une installation douce et d'une première immersion dans l'ambiance décontractée de l'île. Le temps semble ralentir ici, invitant à la sérénité.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left">
+                            
+                                <li>🛬 <strong>Arrivée à Belize City et transfert à Caye Caulker</strong>: Atterrissez à l'aéroport international de Belize City (BZE), puis prenez un taxi jusqu'au terminal de ferry pour une traversée pittoresque vers Caye Caulker. Le voyage en mer offre déjà un aperçu des eaux turquoise.</li>
+                            
+                                <li>🛏️ <strong>Installation à l'hôtel et première balade</strong>: Prenez possession de votre hébergement et déposez vos affaires. Profitez de la fin d'après-midi pour une promenade légère le long de la rue principale, imprégnant l'atmosphère unique de l'île sans voitures.</li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/shepper1/Caye-caulker/main/caye_caulker_jour1.jpg" class="w-full h-64 object-cover" alt="Jour 1">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">ℹ️ Transfert</p>
+                                <p class="text-gray-700">Le ferry de Belize City à Caye Caulker dure environ 45 minutes. Il est recommandé de réserver vos billets à l'avance, surtout en haute saison.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🚶‍♂️ Déplacement</p>
+                                <p class="text-gray-700">À Caye Caulker, la devise est 'Go Slow'. Il n'y a pas de voitures, seulement des voiturettes de golf et des vélos. Tout se fait à pied, ce qui contribue au charme de l'île.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-2" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2">Jour 2</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Immersion dans le 'Go Slow'</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Aujourd'hui, vous découvrez l'essence même de Caye Caulker : son rythme décontracté et son ambiance bohème. Flânez dans les ruelles sablonneuses, admirez les maisons colorées et laissez-vous tenter par les saveurs locales. C'est une journée pour s'adapter et embrasser pleinement la philosophie insulaire.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left">
+                            
+                                <li>🚶‍♀️ <strong>Exploration du village à pied</strong>: Parcourez les quelques rues principales de Caye Caulker. Découvrez les petites boutiques d'artisanat, les stands de fruits frais et les charmants restaurants locaux.</li>
+                            
+                                <li>🍹 <strong>Détente au 'The Split'</strong>: Rendez-vous à l'extrémité nord de l'île, là où l'ouragan Hattie a divisé Caye Caulker en deux. C'est l'endroit idéal pour nager, prendre un bain de soleil et siroter un cocktail rafraîchissant les pieds dans l'eau.</li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/shepper1/Caye-caulker/main/caye_caulker_jour2.jpg" class="w-full h-64 object-cover" alt="Jour 2">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">☀️ Protection solaire</p>
+                                <p class="text-gray-700">Le soleil des Caraïbes est intense. N'oubliez pas une crème solaire biodégradable, un chapeau et des lunettes de soleil pour toutes vos activités en extérieur.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🍹 Boissons locales</p>
+                                <p class="text-gray-700">Goûtez aux jus de fruits frais pressés et aux fameux 'Rum Punch' locaux, parfaits pour se rafraîchir après une journée au soleil.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-3" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2">Jour 3</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Merveilles sous-marines</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Préparez-vous à une journée inoubliable au cœur de la barrière de corail du Belize, la deuxième plus grande au monde. Nagez parmi une faune marine exubérante, des coraux multicolores aux requins nourrices inoffensifs, pour une expérience de snorkeling ou de plongée exceptionnelle.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left">
+                            
+                                <li>🐠 <strong>Excursion snorkeling à Hol Chan Marine Reserve</strong>: Embarquez pour une demi-journée ou une journée complète d'exploration. Nagez dans des eaux cristallines et observez des tortues, des raies, des murènes et une multitude de poissons tropicaux dans cette réserve marine protégée.</li>
+                            
+                                <li>🦈 <strong>Rencontre avec les requins nourrices à Shark Ray Alley</strong>: Vivez une expérience unique en nageant en toute sécurité aux côtés de requins nourrices et de raies pastenagues. Ces créatures sont habituées à la présence humaine et offrent un spectacle fascinant.</li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/shepper1/Caye-caulker/main/caye_caulker_jour3.jpg" class="w-full h-64 object-cover" alt="Jour 3">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🤿 Équipement</p>
+                                <p class="text-gray-700">La plupart des tours incluent le matériel de snorkeling. Vérifiez qu'il est en bon état avant de partir.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">⚠️ Respect de la faune</p>
+                                <p class="text-gray-700">Il est crucial de ne pas toucher les coraux ni les animaux marins pour préserver cet écosystème fragile.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-4" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2">Jour 4</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Aventure en kayak et farniente</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Après les émotions sous-marines, cette journée est dédiée à une exploration plus douce de l'île et de ses environs. Pagayez vers des criques isolées, puis savourez un après-midi de pure détente, bercé par la brise marine et le clapotis des vagues.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left">
+                            
+                                <li>🛶 <strong>Kayak ou paddleboard vers le North Island</strong>: Louez un kayak ou un paddleboard et traversez The Split pour explorer la partie nord de Caye Caulker. Cette zone est plus sauvage et offre des plages tranquilles et des mangroves.</li>
+                            
+                                <li>🏖️ <strong>Détente et baignade au Lazy Lizard Bar & Grill</strong>: Après l'effort, le réconfort. Installez-vous au célèbre Lazy Lizard Bar & Grill à The Split, profitez de la musique, des boissons et de la baignade dans les eaux peu profondes.</li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/shepper1/Caye-caulker/main/caye_caulker_jour4.jpg" class="w-full h-64 object-cover" alt="Jour 4">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🚣 Courants</p>
+                                <p class="text-gray-700">Soyez attentif aux courants si vous pagayez loin de The Split, surtout si vous n'êtes pas un pagayeur expérimenté.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🍔 Restauration</p>
+                                <p class="text-gray-700">Le Lazy Lizard propose des plats simples et savoureux, parfaits pour un déjeuner décontracté au bord de l'eau.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-5" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2">Jour 5</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Pêche et saveurs locales</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Plongez dans la culture locale en participant à une sortie de pêche traditionnelle. Apprenez les techniques des pêcheurs béliziens et dégustez les fruits de votre labeur lors d'un barbecue sur la plage. Une expérience authentique qui ravira vos papilles.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left">
+                            
+                                <li>🎣 <strong>Excursion de pêche à la ligne ou au harpon</strong>: Rejoignez un pêcheur local pour une matinée en mer. Que vous soyez novice ou expérimenté, c'est une excellente occasion d'apprendre et de capturer votre propre dîner.</li>
+                            
+                                <li>🍽️ <strong>Barbecue de votre pêche sur la plage</strong>: De retour sur l'île, votre capitaine ou un restaurant local pourra préparer votre prise du jour. Savourez un poisson frais grillé, accompagné de riz et de légumes, les pieds dans le sable.</li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/shepper1/Caye-caulker/main/caye_caulker_jour5.jpg" class="w-full h-64 object-cover" alt="Jour 5">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💰 Négociation</p>
+                                <p class="text-gray-700">N'hésitez pas à négocier les prix pour les excursions de pêche directement avec les capitaines sur les quais.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">👨‍🍳 Cuisine</p>
+                                <p class="text-gray-700">Demandez à votre hôte ou au restaurant de vous montrer comment préparer le poisson à la mode bélizienne, souvent avec des épices locales.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-6" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2">Jour 6</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Exploration approfondie des récifs</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Pour les amateurs de plongée ou ceux qui souhaitent explorer davantage les fonds marins, cette journée offre l'opportunité de découvrir des sites moins fréquentés. Plongez dans des grottes sous-marines ou explorez des jardins de corail intacts, révélant la richesse cachée de la barrière.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left">
+                            
+                                <li>🤿 <strong>Journée plongée pour plongeurs certifiés</strong>: Si vous êtes certifié, optez pour une journée de plongée qui vous mènera à des sites plus profonds et moins accessibles, comme le Turneffe Atoll ou le Lighthouse Reef Atoll, abritant le célèbre Blue Hole (option plus coûteuse).</li>
+                            
+                                <li>🐠 <strong>Snorkeling sur des sites alternatifs</strong>: Si la plongée n'est pas votre tasse de thé, choisissez une excursion de snorkeling vers des récifs différents, comme le Caye Caulker Marine Reserve, pour découvrir d'autres facettes de la vie marine locale.</li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/shepper1/Caye-caulker/main/caye_caulker_jour6.jpg" class="w-full h-64 object-cover" alt="Jour 6">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">📜 Certification</p>
+                                <p class="text-gray-700">Assurez-vous d'avoir votre carte de certification de plongée et votre carnet de plongée à jour si vous prévoyez de plonger.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💸 Blue Hole</p>
+                                <p class="text-gray-700">L'excursion au Blue Hole est une journée complète et coûteuse, souvent en avionnette. Prévoyez un budget conséquent si vous souhaitez la faire.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-7" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2">Jour 7</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Détente et ateliers locaux</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Après plusieurs jours d'activités intenses, cette journée est placée sous le signe de la relaxation et de la découverte culturelle. Prenez le temps de vous ressourcer, d'apprendre une nouvelle compétence locale ou simplement de vous prélasser au soleil, en profitant de la quiétude de l'île.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left">
+                            
+                                <li>🧘‍♀️ <strong>Cours de yoga ou massage relaxant</strong>: De nombreux établissements proposent des cours de yoga face à la mer ou des massages. C'est l'occasion parfaite pour se détendre et se recentrer.</li>
+                            
+                                <li>👨‍🍳 <strong>Atelier de cuisine bélizienne</strong>: Participez à un cours de cuisine pour apprendre à préparer des plats typiques comme le riz et les haricots, le poisson à la noix de coco ou les 'fry jacks'. Une immersion gourmande garantie.</li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/shepper1/Caye-caulker/main/caye_caulker_jour7.jpg" class="w-full h-64 object-cover" alt="Jour 7">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🍽️ Spécialités</p>
+                                <p class="text-gray-700">Ne quittez pas Caye Caulker sans avoir goûté au 'Stew Chicken' ou au 'Lobster' (en saison) dans un des petits restaurants locaux.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🎁 Souvenirs</p>
+                                <p class="text-gray-700">Profitez-en pour acheter des épices locales ou des sauces piquantes pour ramener un peu de Belize chez vous.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-8" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2">Jour 8</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Coucher de soleil et saveurs nocturnes</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">La fin de journée à Caye Caulker est un spectacle en soi. Admirez les couleurs flamboyantes du coucher de soleil sur la mer, puis laissez-vous emporter par l'ambiance animée des restaurants de plage. Une soirée romantique et gourmande en perspective.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left">
+                            
+                                <li>🌅 <strong>Croisière au coucher du soleil</strong>: Embarquez pour une croisière relaxante en fin d'après-midi. Observez le soleil disparaître à l'horizon, peignant le ciel de couleurs spectaculaires, souvent accompagnée de musique et de boissons.</li>
+                            
+                                <li>🦞 <strong>Dîner de fruits de mer frais sur la plage</strong>: Choisissez un des nombreux restaurants qui grillent leur pêche du jour directement sur la plage. Dégustez du homard (en saison), des crevettes ou du poisson frais, les pieds dans le sable.</li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/shepper1/Caye-caulker/main/caye_caulker_jour8.jpg" class="w-full h-64 object-cover" alt="Jour 8">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🦐 Saison du homard</p>
+                                <p class="text-gray-700">La saison du homard au Belize s'étend généralement de juin à février. Si vous voyagez pendant cette période, c'est un incontournable.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🎶 Ambiance</p>
+                                <p class="text-gray-700">De nombreux bars proposent de la musique live en soirée, créant une atmosphère festive et décontractée.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-9" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2">Jour 9</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Balade à vélo et plages secrètes</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Louez un vélo et partez à l'aventure pour découvrir les recoins moins fréquentés de l'île. Explorez des plages isolées, rencontrez les habitants et imprégnez-vous de la vie locale loin de l'agitation. Une journée pour se perdre et se retrouver.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left">
+                            
+                                <li>🚲 <strong>Balade à vélo le long de la côte</strong>: Louez un vélo pour la journée et explorez les chemins de terre qui serpentent le long de la côte. Vous découvrirez des plages plus calmes et des vues imprenables sur la mer des Caraïbes.</li>
+                            
+                                <li>🌴 <strong>Découverte des plages moins fréquentées</strong>: Aventurez-vous vers le sud de l'île, au-delà des zones les plus touristiques. Vous y trouverez des spots parfaits pour une baignade tranquille ou un pique-nique improvisé.</li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/shepper1/Caye-caulker/main/caye_caulker_jour9.jpg" class="w-full h-64 object-cover" alt="Jour 9">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💧 Hydratation</p>
+                                <p class="text-gray-700">Emportez suffisamment d'eau, car les magasins peuvent être rares en dehors du centre du village.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🗺️ Orientation</p>
+                                <p class="text-gray-700">L'île est petite, il est difficile de se perdre. Demandez aux locaux pour des indications sur les meilleurs spots.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-10" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2">Jour 10</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Derniers instants 'Go Slow'</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Profitez de cette dernière journée complète pour savourer une dernière fois l'ambiance unique de Caye Caulker. Faites quelques emplettes pour ramener un souvenir de votre voyage, ou simplement détendez-vous et imprégnez-vous des derniers rayons de soleil caribéens. Une journée pour dire au revoir en douceur.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left">
+                            
+                                <li>🛍️ <strong>Shopping de souvenirs et artisanat local</strong>: Parcourez les petites boutiques pour trouver des souvenirs uniques, des bijoux faits main aux œuvres d'art locales, en passant par des produits à base de noix de coco.</li>
+                            
+                                <li>☕ <strong>Café et contemplation au bord de l'eau</strong>: Installez-vous dans un café en bord de mer. Savourez un café bélizien tout en observant les bateaux passer et en vous remémorant les meilleurs moments de votre séjour.</li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/shepper1/Caye-caulker/main/caye_caulker_jour10.jpg" class="w-full h-64 object-cover" alt="Jour 10">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💸 Monnaie</p>
+                                <p class="text-gray-700">La monnaie locale est le dollar bélizien (BZD), mais les dollars américains (USD) sont largement acceptés (1 USD = 2 BZD).</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💳 Paiement</p>
+                                <p class="text-gray-700">La plupart des commerces acceptent les cartes de crédit, mais avoir un peu de liquide est toujours utile pour les petits achats ou les pourboires.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-11" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2">Jour 11</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Retour vers la métropole</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Il est temps de quitter la douceur de Caye Caulker. Après un dernier petit-déjeuner insulaire, vous reprendrez le chemin vers Belize City, puis l'aéroport international. Préparez-vous à la transition entre le rythme lent des Caraïbes et l'effervescence du retour.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left">
+                            
+                                <li>✈️ <strong>Transfert de Caye Caulker à l'aéroport de Belize City</strong>: Prenez le ferry de retour vers Belize City, puis un taxi ou une navette directement vers l'aéroport international (BZE) pour votre vol de retour.</li>
+                            
+                                <li>🛫 <strong>Vol international Belize City - Paris</strong>: Embarquez pour votre vol retour vers Paris. Profitez-en pour vous reposer et commencer à trier vos photos et souvenirs de ce voyage inoubliable.</li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/shepper1/Caye-caulker/main/caye_caulker_jour11.jpg" class="w-full h-64 object-cover" alt="Jour 11">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">⏰ Timing</p>
+                                <p class="text-gray-700">Prévoyez suffisamment de temps pour le transfert ferry + taxi jusqu'à l'aéroport (environ 1h30-2h), en plus du temps d'enregistrement.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🛄 Bagages</p>
+                                <p class="text-gray-700">Vérifiez les restrictions de bagages de votre compagnie aérienne, surtout si vous avez ramené des souvenirs encombrants.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-12" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2">Jour 12</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Arrivée à Paris</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Après une nuit en vol, vous atterrissez à Paris. Le retour à la réalité est souvent brutal, mais les images des eaux turquoise, des couchers de soleil flamboyants et de la philosophie 'Go Slow' resteront gravées dans votre mémoire, vous invitant déjà à la prochaine évasion.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left">
+                            
+                                <li>🛬 <strong>Arrivée à l'aéroport de Paris</strong>: Atterrissage à l'aéroport de Paris, marquant la fin de votre aventure bélizienne. Récupérez vos bagages et rentrez chez vous, la tête pleine de souvenirs exotiques.</li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/shepper1/Caye-caulker/main/caye_caulker_jour12.jpg" class="w-full h-64 object-cover" alt="Jour 12">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">😴 Décalage horaire</p>
+                                <p class="text-gray-700">Prévoyez un temps de repos pour vous remettre du décalage horaire (environ 7 heures avec la France).</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">📸 Souvenirs</p>
+                                <p class="text-gray-700">Commencez à partager vos photos et vos récits de voyage avec vos proches pour prolonger l'évasion.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+    </section>
+
+    <footer id="pratique" class="bg-white border-t border-gray-200 pt-16 pb-10 scroll-mt-24">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10 mb-12">
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2">
+                    <span>💴</span> Budget
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed"><strong>Budget vol: </strong>1200€/pers (Vol A/R Paris-Belize City avec escales)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed"><strong>Budget transports: </strong>300€/pers (Ferry, taxis, excursions bateau)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed"><strong>Budget repas: </strong>480€/pers (Environ 40€/jour pour 12 jours, repas variés)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed"><strong>Budget logement: </strong>1100€/pers (11 nuits à 100€/nuit en moyenne, hôtel/guesthouse)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed"><strong>Budget activités: </strong>400€/pers (Excursions snorkeling, plongée optionnelle, kayak, etc.)</p>
+                
+            </div>
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2">
+                    <span>☀️</span> Périodes Idéales
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed">Les périodes idéales pour ce séjour sont les mois de février à avril, offrant un temps sec et ensoleillé.</p>
+                
+            </div>
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2">
+                    <span>🧳</span> À savoir
+                </h4>
+                <ul class="text-sm text-gray-600 space-y-3">
+
+                        <li><strong>🗣️ :</strong> La langue officielle est l'anglais, mais l'espagnol est également parlé. La monnaie est le dollar bélizien (BZD), mais le dollar américain est largement accepté (1 USD = 2 BZD).</li>
+                    
+                        <li><strong>🛂 :</strong> Aucun visa n'est requis pour les citoyens français pour un séjour de moins de 30 jours, mais un passeport valide 6 mois après la date de retour est nécessaire.</li>
+                    
+                        <li><strong>👕 :</strong> Le Belize est un pays tropical. Prévoyez des vêtements légers, un maillot de bain, un chapeau, des lunettes de soleil et une crème solaire biodégradable. Un anti-moustique peut être utile en soirée.</li>
+                    
+                        <li><strong>💧 :</strong> L'eau du robinet n'est pas potable. Il est recommandé de boire de l'eau en bouteille. Les prises électriques sont de type A et B (comme aux États-Unis), prévoyez un adaptateur.</li>
+                    
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2"><span>🔗</span> Liens Utiles</h4>
+                <ul class="text-sm space-y-3">
+                  <li><a href="https://shepper1.github.io/Caye caulker/map.html" target="_blank" class="hover:underline flex items-center gap-2"><strong>🗺️ Carte</strong></a></li>
+                    
+                        <li><a href="https://www.travelbelize.org/" target="_blank" class="hover:underline flex items-center gap-2"><strong>📘 Belize Tourism Board</strong></a></li>
+                    
+                        <li><a href="https://belizewatertaxi.com/" target="_blank" class="hover:underline flex items-center gap-2"><strong>🚢 San Pedro Belize Express Water Taxi</strong></a></li>
+                    
+                        <li><a href="https://www.hydromet.gov.bz/" target="_blank" class="hover:underline flex items-center gap-2"><strong>🌤️ Météo Belize</strong></a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="text-center border-t border-gray-100 pt-8">
+            <p class="font-serif text-2xl text-template-roche mb-2">Caye caulker</p>
+            <p class="text-xs text-gray-400">© 2025 - Roadmap</p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Gestion de l'affichage du menu au scroll
+        const navDesktop = document.getElementById('nav-desktop');
+        const navMobile = document.getElementById('nav-mobile');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                navDesktop.classList.remove('-translate-y-full');
+                navMobile.classList.remove('-translate-y-full');
+            } else {
+                navDesktop.classList.add('-translate-y-full');
+                navMobile.classList.add('-translate-y-full');
+            }
+        });
+
+        // 2. Détection de l'étape active
+        const observerOptions = {
+            root: null,
+            rootMargin: '-40% 0px -60% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const activeId = entry.target.id;
+                    
+                    document.querySelectorAll('.mobile-link').forEach(link => {
+                        const linkHref = link.getAttribute('href').substring(1);
+                        if (linkHref === activeId) {
+                            link.classList.remove('bg-gray-100', 'text-gray-700');
+                            link.classList.add('bg-template-ocre', 'text-white', 'shadow-md');
+                            link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                        } else {
+                            link.classList.add('bg-gray-100', 'text-gray-700');
+                            link.classList.remove('bg-template-ocre', 'text-white', 'shadow-md');
+                        }
+                    });
+
+                    document.querySelectorAll('.nav-item-desktop').forEach(link => {
+                        const linkHref = link.getAttribute('href').substring(1);
+                        if (activeId.includes('jour') && linkHref === 'jour-1') {
+                            link.classList.add('text-template-ocre');
+                        } else if (activeId === 'pratique' && linkHref === 'pratique') {
+                            link.classList.add('text-template-ocre');
+                        } else {
+                            link.classList.remove('text-template-ocre');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('div[id^="jour-"], footer#pratique').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
